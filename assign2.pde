@@ -51,8 +51,8 @@ void setup () {
   fighterX = 570;
   fighterY = 240;
   //treasure
-  treasureX = floor(random(640));
-  treasureY = floor(random(480));
+  treasureX = floor(random(600));
+  treasureY = floor(random(400));
   //hp
   hpX = 40;
   //enemy
@@ -120,15 +120,20 @@ void draw() {
     
     //treasure
     image(treasure,treasureX,treasureY);
-    if(fighterX+25 >treasureX && fighterX+25<treasureX+41 && fighterY+25 >treasureY && fighterY+25<treasureY+41){
+    if(fighterX+51 >treasureX && fighterX-41<treasureX && fighterY+51 >treasureY && fighterY-41<treasureY){
       treasureX = floor(random(600));
       treasureY = floor(random(400));
       hpX +=20;
     }
+    
     //hp
+    if(hpX>=200){
+        hpX = 200;
+      }
     fill(255,0,0);
     rect(15,13,hpX,20);
     image(hp,10,10);
+    
     
     //enemy
     image(enemy,enemyX,enemyY);
@@ -144,7 +149,7 @@ void draw() {
     if(enemyY>fighterY){
       enemyY -= (enemyY-fighterY)/20; 
     }
-    if(fighterX+25 >enemyX && fighterX+25<enemyX+61 && fighterY+25 >enemyY && fighterY+25<enemyY+61){
+    if(fighterX+51 >enemyX && fighterX-61<enemyX && fighterY+51 >enemyY && fighterY-61<enemyY){
       enemyX = 0;
       enemyY = floor(random(420));
       hpX -=40;
